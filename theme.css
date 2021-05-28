@@ -343,11 +343,11 @@ span.counter:not(.popover__block){
 .layout-tab-bar{
     background-color: var(--b3-theme-background);
     border-bottom: var(--allen-column-border);
-    padding: 0px 20px;
+    padding: 0px 10px;
 }
 .layout-tab-bar .item{
-    border-radius: 4px;
-    margin: 6px 0px 5px 0px;
+    border-radius: 40px;
+    margin: 6px 0px 4px 0px;
     padding: 4px;
     border-bottom: none;
 }
@@ -392,16 +392,16 @@ span.counter:not(.popover__block){
     position: absolute;
     width: 4px;
     height: 4px;
-    border-radius: 3px;
-    border:1px solid var(--b3-theme-background);
-    box-shadow: 0 0 2px 1.5px #1295c9;
+    border-radius: 4px;
+    border: 1px solid var(--b3-theme-background);
+    box-shadow: 0 0 1px 1px #1295c9;
     top:7px;
     left: 4px;
 }
 .layout-tab-bar .item--unupdate.item--focus .item__text::after{
     background-color: #2ba81a;
-    border:1px solid var(--b3-theme-background);
-    box-shadow: 0 0 2px 1.5px #2ba81a;
+    border: 1px solid var(--b3-theme-background);
+    box-shadow: 0 0 1px 1px #2ba81a;
 
 }
 .layout-tab-bar .item--unupdate.item--focus{
