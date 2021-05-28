@@ -4,4 +4,4 @@
 
 问题反馈：https://github.com/langzhou/siyuan-note/issues/1
 
-![preview](https://raw.githubusercontent.com/langzhou/winter-mix-theme-for-siyuan/main/preview.png)
+![preview](https://raw.githubusercontent.com/langzhou/winter-mix-theme-for-siyuan/master/preview.png)
