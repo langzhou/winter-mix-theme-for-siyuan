@@ -177,7 +177,7 @@
 
 /* 说明：支持在全屏模式下自动隐藏顶栏，鼠标悬浮时展现。请将 min-height和 min-width 设置为自己电脑屏幕分辨率，如果不需要此功能请注释代码 */
 /******* 隐藏toolbar 代码开始 *********/
-@media only screen and (min-height: 800px) and (min-width: 1000px)
+@media only screen and (min-height: 900px) and (min-width: 1400px)
 {
     .toolbar{
         height: 0px;
@@ -345,12 +345,15 @@ span.counter:not(.popover__block){
     border-bottom: var(--allen-column-border);
     padding: 0px 10px;
 }
+/* 页签项 */
 .layout-tab-bar .item{
     border-radius: 40px;
     margin: 6px 0px 4px 0px;
     padding: 4px;
     border-bottom: none;
+    background: transparent;
 }
+/* 激活的页签 */
 .layout__wnd--active .layout-tab-bar .item--focus .item__text{
     /* font-weight: bold; */
     color: var(--b3-theme-on-background);
@@ -402,7 +405,6 @@ span.counter:not(.popover__block){
     background-color: #2ba81a;
     border: 1px solid var(--b3-theme-background);
     box-shadow: 0 0 1px 1px #2ba81a;
-
 }
 .layout-tab-bar .item--unupdate.item--focus{
     color: var(--b3-theme-on-background) !important;
@@ -410,6 +412,9 @@ span.counter:not(.popover__block){
 .layout-tab-bar .item--unupdate{
     font-style: normal;
 }
+
+
+
 /***** 面包屑 *****/
 .protyle-breadcrumb{
     background-color: var(--b3-theme-background);
@@ -803,38 +808,45 @@ strong[style]{
     line-height: var(--allen-line-height);
 }
 
-/*标题 h*/
+/****** 标题 ********/
+/* 页面标题 */
+.protyle-title__input{
+
+}
+
+/* 文档标题 */
 .b3-typography .h1,.b3-typography h1,.b3-typography .h2,.b3-typography h2,.b3-typography .h3,.b3-typography h3,.b3-typography .h4,.b3-typography h4,.b3-typography .h5,.b3-typography h5,.b3-typography .h6,.b3-typography h6,.protyle-wysiwyg .h1,.protyle-wysiwyg h1,.protyle-wysiwyg .h2,.protyle-wysiwyg h2,.protyle-wysiwyg .h3,.protyle-wysiwyg h3,.protyle-wysiwyg .h4,.protyle-wysiwyg h4,.protyle-wysiwyg .h5,.protyle-wysiwyg h5,.protyle-wysiwyg .h6,.protyle-wysiwyg h6 {
 
 }
 
 .b3-typography .h1, .b3-typography h1, .protyle-wysiwyg .h1, .protyle-wysiwyg h1{
-    margin: 14px 0 8px 0;
+    margin: 12px 0 8px 0;
     padding: 0.2em 4px;
-    font-size: 1.8em;
+    font-size: 1.75em;
+    border-bottom: 1px solid var(--b3-border-color);
 }
 
 .b3-typography .h2, .b3-typography h2, .protyle-wysiwyg .h2, .protyle-wysiwyg h2{
-    margin: 14px 0 0 0;
-    padding: 0.2em 0px;
-    #font-size: 1.8em;
+    margin: 12px 0 0 0;
+    padding: 0.1em 4px;
+    font-size: 1.55em;
     border:none;
 }
 .b3-typography .h3, .b3-typography h3, .protyle-wysiwyg .h3, .protyle-wysiwyg h3{
-    margin: 12px 0 0 0;
-    #font-size: 1.6em;
+    margin: 10px 0 0 0;
+    font-size: 1.38em;
 }
 .b3-typography .h4, .b3-typography h4, .protyle-wysiwyg .h4, .protyle-wysiwyg h4{
     margin: 6px 0 0 0;
-    #font-size: 1.4em;
+    font-size: 1.25em;
 }
 .b3-typography .h5, .b3-typography h5, .protyle-wysiwyg .h5, .protyle-wysiwyg h5{
-    #margin: 6px 0 0 0;
-    #font-size: 1.2em;
+    /* margin: 6px 0 0 0; */
+    font-size: 1.13em;
 }
 .b3-typography .h6, .b3-typography h6, .protyle-wysiwyg .h6, .protyle-wysiwyg h6{
-    #margin: 6px 0 0 0;
-    #font-size: 1em;
+    /* margin: 6px 0 0 0; */
+    font-size: 1em;
 }
 
 /* 引述 */
