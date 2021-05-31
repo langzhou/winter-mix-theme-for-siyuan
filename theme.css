@@ -11,7 +11,7 @@
     --b3-theme-primary-lightest: rgba(128, 128, 128, 0.1);
     --b3-theme-secondary: #f3a92f;
     --b3-theme-background: #FFFFFF; /* 编辑区背景 */
-    --b3-theme-surface: #fafafa; /* 面板边栏 */
+    --b3-theme-surface: #f9f9f9; /* 面板边栏 */
     --b3-theme-error: #d23f31;
 
 
@@ -164,8 +164,9 @@
 
 /********** 一、框架&控件 *******************************************************/
 
+/* 设为 auto 之后可消除页签上方1像素的黑线，但也会带来反链浮窗列表高度的一些问题 */
 .fn__flex-1{
-    min-height: auto;
+    /* min-height: auto; */
 }
 
 /******* 顶部工具栏 toolbar **********/
@@ -419,6 +420,7 @@ span.counter:not(.popover__block){
 .protyle-breadcrumb{
     background-color: var(--b3-theme-background);
     border-bottom: 0px solid var(--b3-border-color);
+    padding: 0 8px;
 }
 .protyle-breadcrumb__bar{
     background-color: var(--b3-theme-background);
@@ -598,17 +600,20 @@ span.counter:not(.popover__block){
     background-color: var(--b3-theme-background);
     /* color: var(--b3-theme-on-background); */
 }
+/*悬浮时显示完整面包屑 */
 .block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__item,.block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__arrow{
-    visibility: visible; /*悬浮时显示完整面包屑*/
+    visibility: visible;  
+    /* opacity: 1; */
 }
 .block__popover .protyle-breadcrumb__item:not(:first-child),.block__popover .protyle-breadcrumb__arrow:not(:first-child){
     visibility: hidden;
+    /* opacity: 0; */
 }
 .block__popover .protyle-breadcrumb__item:first-child{
     font-weight: bold; /*文件名加粗*/
 }
 .block__popover .protyle-breadcrumb__item:first-child svg{
-    display: none;
+    /* display: none; */
 }
 /*调整右侧三点菜单样式*/
 .block__popover .protyle-breadcrumb .b3-tooltips{
