@@ -1,4 +1,4 @@
-/******* Chocolate: Theme for SiYuan Note ************
+/******* Winter-Mix: Theme for SiYuan Note ************
 1. 本主题样式仅在16px字号设置下进行有限场景的测试，不能保证所有页面均完美呈现。如果遇到相关功能或样式问题，请重置为官方主题后再确认问题是否重现。
 2. 标注为「实验功能」的部分请谨慎开启使用。
 /************************/
@@ -11,18 +11,16 @@
     --b3-theme-primary-lightest: rgba(128, 128, 128, 0.1);
     --b3-theme-secondary: #f3a92f;
     --b3-theme-background: #FFFFFF; /* 编辑区背景 */
-    --b3-theme-surface: #f9f9f9; /* 面板边栏 */
+    --b3-theme-surface: #f7f6f3; /* 面板边栏 */
     --b3-theme-error: #d23f31;
-
 
     /* 文字颜色 */
     --b3-theme-on-primary:    #FFFFFF;
     --b3-theme-on-secondary:  #FFFFFF;
-    --b3-theme-on-background: #37352f;
+    --b3-theme-on-background: #494949;
     --b3-theme-on-surface:    #666666;
     --b3-theme-on-error:      #FFFFFF;
 
-    --b3-theme-on-background: #444444;
 
     /* 字体 */
     --b3-font-family:  "Pingfang SC","Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
@@ -47,13 +45,13 @@
 
     /* 卡片背景 */
     --b3-card-error-color: rgb(97, 26, 21);
-    --b3-card-error-background: rgb(253, 236, 234);
+    --b3-card-error-background: rgba(253, 236, 234, 0.8);
     --b3-card-warning-color: rgb(102, 60, 0);
-    --b3-card-warning-background: rgb(255, 244, 229);
+    --b3-card-warning-background: rgba(255, 244, 229, 0.8);
     --b3-card-info-color: rgb(13, 60, 97);
-    --b3-card-info-background: rgb(232, 244, 253);
+    --b3-card-info-background: rgba(232, 244, 253, 0.8);
     --b3-card-success-color: rgb(30, 70, 32);
-    --b3-card-success-background: rgb(237, 247, 237);
+    --b3-card-success-background: rgba(237, 247, 237, 0.8);
 
     /* 自定义文字 */
     --b3-font-color1: var(--b3-card-error-color);
@@ -128,7 +126,7 @@
     --b3-protyle-code-background: rgba(27, 31, 35, .05);
 
     /* 所见即所得行内元素颜色 */
-    --b3-protyle-inline-strong-color: var(--b3-theme-on-background); /* 粗体 */
+    --b3-protyle-inline-strong-color: inherit; /* 粗体 */
     --b3-protyle-inline-em-color:  var(--b3-theme-on-background); /* 斜体 */
     --b3-protyle-inline-s-color: var(--b3-theme-on-background); /* 删除线 */
     --b3-protyle-inline-link-color: #008080; /* 超级链接 */
@@ -138,8 +136,7 @@
     --b3-protyle-inline-blockref-color: var(--b3-theme-primary); /* 双向链接文本 */
 
 /************* added by allen **********************************************************/
-    --allen-theme-panl: #333333; 
-    --allen-theme-on-panl: #888888;
+
     --allen-protyle-inline-code:#558eda; /* 行内代码颜色 */
     --allen-protyle-inline-code-background:rgba(208, 187, 193, 0.2); /* 行内代码背景色 */
 
@@ -158,32 +155,30 @@
     --allen-page-scrollbar-transition: opacity 800ms ease 0s; /*分页加载条动画*/
     --allen-flex-column-transition: width 200ms cubic-bezier(0, 0.7, 0.4, 1); /*侧边栏动画*/
     --allen-common-transition: all 400ms ease 0s;/*通用动画*/
+
+    /* 毛玻璃效果配置 */
+    --allen-background-image: url(src/bg.jpg);
+    --allen-blur-value: 55px; /* 调节背景图片模糊程度 */
 }
 
 
 
 /********** 一、框架&控件 *******************************************************/
 
-/* 设为 auto 之后可消除页签上方1像素的黑线，但也会带来反链浮窗列表高度的一些问题 */
-.fn__flex-1{
-    /* min-height: auto; */
-}
-
 /******* 顶部工具栏 toolbar **********/
 .toolbar{
-    background-color:   var(--allen-theme-panl);
+    background-color:   var(--b3-theme-surface);
     border-bottom:      var(--allen-column-border);
 }
 
 
 /* 说明：支持在全屏模式下自动隐藏顶栏，鼠标悬浮时展现。请将 min-height和 min-width 设置为自己电脑屏幕分辨率，如果不需要此功能请注释代码 */
-/******* 隐藏toolbar 代码开始 *********/
+/******* 隐藏toolbar 代码开始 *********
 @media only screen and (min-height: 900px) and (min-width: 1400px)
 {
     .toolbar{
         height: 0px;
         transition: height 400ms ease 0s;
-        margin-top: -1px; /* 消除下边框的影响 */
     }
     .toolbar > div{
         visibility: hidden;
@@ -200,9 +195,8 @@
 
 
 /******* dock  **********/
-/* 左侧 dock */
 #dockLeft, #dockRight, #dockTop, #dockBottom{
-    background-color: var(--allen-theme-panl);
+    background-color: var(--b3-theme-surface);
 }
 #dockLeft{
     border-right:var(--allen-column-border);
@@ -216,54 +210,32 @@
 #dockBottom{
     border-top: var(--allen-column-border)
 }
-.toolbar__item, .dock__item{
-    color: var(--allen-theme-on-panl);
-}
-.toolbar__item:hover, .dock__item--active, .dock__item:hover:not(.dock__item--active){
-    color: var(--b3-theme-on-surface);
-}
+
 /******** 边栏 column **********/
-/* .fn__flex-column {
-    background-color: var(--allen-theme-panl);
-    color: var(--allen-theme-on-panl);
-} */
-.layout-tab-container{
-    background-color: var(--allen-theme-panl);
-    color: var(--allen-theme-on-panl);
-}
 /* 侧边栏收起动画 */
 #layouts > .fn__flex-1 > .fn__flex-column{
     transition: var(--allen-flex-column-transition);
 }
 /*  边栏分割线 */
 .layout__resize--lr:after{
+    background-color: var(--b3-theme-surface);
     transition: var(--allen-common-transition);
-    background-color: var(--b3-border-color);
-}
-.layout__resize:hover:after{
-    background-color: rgba(0,128,128,0.5);
-    /* box-shadow: 0 0 3px rgba(0,128,128,1); */
 }
 
 /* 边栏标题栏 */
 .block__icons{
-    background-color: var(--allen-theme-panl);
-    color: var(--allen-theme-on-panl);
-}
-.graph .block__icons{
     background-color: var(--b3-theme-surface);
 }
 /* 边栏列表项 */
-.b3-list-item, .b3-list-item__text{
-    color: var(--allen-theme-on-panl);
+.b3-list-item__text{
+    color: var(--b3-theme-on-surface);
 }
-
 /* 边栏列表项图标 */
 .b3-list-item li svg{
-    color: var(--allen-theme-on-panl);
+    color: var(--b3-theme-primary);
 }
 .b3-list-item__graphic{
-    color: var(--allen-theme-on-panl);
+    #color: #666666;
 }
 .b3-list--background .b3-list-item--focus{
     #background-color: var(--b3-theme-primary-lightest) !important;
@@ -283,10 +255,6 @@ span.counter:not(.popover__block){
 /* 通用 */
 .b3-menu, .protyle-util{
     background-color: var(--b3-theme-background);
-}
-/* 设置面板 */
-.b3-dialog__container .b3-list-item{
-    color: var(--b3-theme-on-surface);
 }
 /* 右键菜单 */
 .b3-menu{
@@ -337,6 +305,9 @@ span.counter:not(.popover__block){
     border-radius: 2px;
 }
 
+.b3-text-filed[readonly]{
+    border: none;
+}
 
 /******** 文档编辑区 **********/
 
@@ -344,87 +315,47 @@ span.counter:not(.popover__block){
 .layout-tab-bar{
     background-color: var(--b3-theme-background);
     border-bottom: var(--allen-column-border);
-    padding: 0px 10px;
 }
-/* 页签项 */
-.layout-tab-bar .item{
-    border-radius: 40px;
-    margin: 6px 0px 4px 0px;
-    padding: 4px;
-    border-bottom: none;
-    background: transparent;
-}
-/* 激活的页签 */
-.layout__wnd--active .layout-tab-bar .item--focus .item__text{
-    /* font-weight: bold; */
-    color: var(--b3-theme-on-background);
-    border-color: transparent;
-    opacity: 1;
-}
-
 /*清除页签栏边框对侧边栏的影响*/
 .layout-tab-bar:empty{
     border-bottom: none;
 }
 /* 页签选中状态 */
-.layout-tab-bar .item--focus{
+.layout-tab-bar .item{
     background-color: transparent;
+    border-bottom: 2px solid transparent;
+    color: var(--b3-theme-on-surface);
+    opacity: 0.7;
+}
+.layout-tab-bar .item--focus{
+    /* background-color: var(--b3-theme-surface); */
+    border-color: var(--b3-theme-primary);
+    color: var(--b3-theme-on-background);
+    opacity: 1;
 }
 /* 页签标题 */
 .layout-tab-bar .item__text{
-    padding: 0 0 0 16px;
-    color: var(--b3-theme-on-background);
-    text-overflow:ellipsis;
-    opacity: 0.6;
+    padding: 0 2px;
 }
-.layout-tab-bar .item__text::after{
-    background: transparent;
-}
+/* 默认隐藏页签关闭按钮，悬浮时展现 */
 .layout-tab-bar .item__close{
     visibility: hidden;
-    margin-left: 4px;
 }
 .layout-tab-bar .item:hover .item__close{
     visibility: visible;
 }
-.layout-tab-bar .item:hover:not(.item--focus) .item__text::after{
-    background: transparent;
-}
-.layout-tab-bar .item--focus .item__text::after{
-    background: transparent;
-    background-color: #1295c9;
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 4px;
-    border: 1px solid var(--b3-theme-background);
-    box-shadow: 0 0 1px 1px #1295c9;
-    top:7px;
-    left: 4px;
-}
-.layout-tab-bar .item--unupdate.item--focus .item__text::after{
-    background-color: #2ba81a;
-    border: 1px solid var(--b3-theme-background);
-    box-shadow: 0 0 1px 1px #2ba81a;
-}
 .layout-tab-bar .item--unupdate.item--focus{
     color: var(--b3-theme-on-background) !important;
 }
-.layout-tab-bar .item--unupdate{
-    font-style: normal;
-}
-
-
-
 /***** 面包屑 *****/
 .protyle-breadcrumb{
     background-color: var(--b3-theme-background);
     border-bottom: 0px solid var(--b3-border-color);
-    padding: 0 8px;
+    padding: 0px 8px;
 }
 .protyle-breadcrumb__bar{
     background-color: var(--b3-theme-background);
-    padding: 7px 5px;
+    padding: 4px 8px;
     border-radius: 100px;
 }
 .protyle-breadcrumb__bar:hover{
@@ -454,8 +385,6 @@ span.counter:not(.popover__block){
 /* 设置编辑器光标颜色 */
 .protyle-wysiwyg{
      caret-color:var(--b3-theme-primary);
-     background-color: var(--b3-theme-background);
-     color: var(--b3-theme-on-background);
 }
 
 /* 光标选中文本样式 */
@@ -549,8 +478,11 @@ span.counter:not(.popover__block){
     width:12px;
     height:12px;
     margin:8px 0px 0px 1px;
-    color: var(--b3-tooltips-color);
     border: 2px solid transparent;
+}
+/* 设置彩色卡片内的原点颜色 */
+.protyle-wysiwyg [data-node-id][style] .protyle-action {
+    color:inherit !important;
 }
 
 /* 圆点悬浮时样式 */
@@ -578,14 +510,11 @@ span.counter:not(.popover__block){
 /* 反链高亮颜色 */
 .backlinkList .b3-list-item__text mark{
     background-color: transparent;
-    color:var(--b3-protyle-inline-mark-background);
+    color:var(--b3-theme-primary);
 }
 
 /* 面板搜索图标 */
 .search__label .b3-form__icon-input{
-    background-color: var(--allen-theme-panl);
-}
-.graph .search__label .b3-form__icon-input{
     background-color: var(--b3-theme-surface);
 }
 
@@ -595,19 +524,11 @@ span.counter:not(.popover__block){
 }
 
 /* 实验功能：优化反链浮窗面板的显示样式 */
-/* 浮窗标题栏 */
-.block__popover .block__icons{
-    background-color: var(--b3-theme-background);
-    /* color: var(--b3-theme-on-background); */
-}
-/*悬浮时显示完整面包屑 */
 .block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__item,.block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__arrow{
-    visibility: visible;  
-    /* opacity: 1; */
+    visibility: visible; /*悬浮时显示完整面包屑*/
 }
 .block__popover .protyle-breadcrumb__item:not(:first-child),.block__popover .protyle-breadcrumb__arrow:not(:first-child){
     visibility: hidden;
-    /* opacity: 0; */
 }
 .block__popover .protyle-breadcrumb__item:first-child{
     font-weight: bold; /*文件名加粗*/
@@ -655,6 +576,7 @@ strong[style]{
 .protyle-wysiwyg u, .b3-typography u{
     text-decoration: none;
     border-bottom: 1px solid var(--b3-theme-on-background);
+    border-color: inherit;
 }
 
 
@@ -699,6 +621,10 @@ strong[style]{
 .protyle-wysiwyg [data-node-id][fold="1"]{
     height:  var(--allen-line-height);
 }
+/* 移除官方设定的padding-top */
+.protyle-wysiwyg [data-node-id][fold="1"] [data-node-id]{
+    padding-top: var(--allen-padding-top-bottom);
+}
 
 /*** 实验功能：调整段落块折叠时的样式 *****/
 .protyle-wysiwyg [data-type="NodeParagraph"][fold="1"]{
@@ -742,6 +668,13 @@ strong[style]{
 .protyle-wysiwyg [data-type="NodeList"][fold="1"], .protyle-wysiwyg [data-type="NodeListItem"][fold="1"]{
     height: calc( var(--allen-line-height) + var(--allen-padding-top-bottom) * 2 ) !important; /* 调整高度使得折叠后垂直位置不会漂移 */
 }
+/* 折叠后消除下属 div 上下边距 */
+/* .protyle-wysiwyg [data-type="NodeList"][fold="1"] div, .protyle-wysiwyg [data-type="NodeListItem"][fold="1"] div{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top:0;
+    padding-bottom: 0;
+} */
 
 /* 折叠状态下隐藏命名、别名、备注、引用数 */
 .protyle-wysiwyg [data-node-id][fold="1"] .protyle-attr{
@@ -804,7 +737,17 @@ strong[style]{
 .protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] .sb,.protyle-wysiwyg [data-node-id].sb[data-sb-layout="row"] .sb{
     margin:4px;
 }
-/****** 实验功能结束 */
+/**** 实验功能结束 ***/
+
+/* 实验功能：颜色卡片增加padding */
+.sb div[data-node-id][style]{
+    padding: 8px 10px;
+}
+/* 嵌套内的颜色卡片恢复正常padding */
+.sb div[data-node-id][style] div[data-node-id][style] {
+    padding: var(--allen-block-padding);
+}
+/**** 实验功能结束 ***/
 
 /* 段落 p */
 .b3-typography p, .b3-typography [data-node-id], .protyle-wysiwyg p, .protyle-wysiwyg [data-node-id]{
@@ -953,29 +896,205 @@ strong[style]{
 }
 /************ 显示标题层级 代码结束 **************/
 
+/*********实验功能：毛玻璃效果 代码开始************************************/
+/* 毛玻璃效果通用设置 */
+body{
+    background-color: white;
+    background-image: var(--allen-background-image);
+    background-position: center top;
+	background-size: cover;
+}
+.toolbar,#dockLeft, #dockRight, #dockTop, #dockBottom{
+    background: transparent;
+}
+
+.fn__flex-1.fn__flex [data-type='wnd']{
+    #background: transparent; 
+    min-height: 90% !important;
+    margin: 0px auto;
+    padding: 2px 10px;
+    position: relative;
+    margin: 10px;
+    box-shadow: 0 4px 12px rgba(120,120,120,0.3);
+	overflow: hidden;
+	z-index: 2;
+	box-sizing: border-box;
+    border-radius: 6px;
+}
+
+[data-type='wnd']::before{
+    content: '';
+	position: absolute;
+	top: 0;	left: 0; right: 0;	bottom: 0;
+	-webkit-filter: blur(var(--allen-blur-value));
+	-moz-filter: blur(var(--allen-blur-value));
+	-ms-filter: blur(var(--allen-blur-value));
+	-o-filter: blur(var(--allen-blur-value));
+	filter: blur(var(--allen-blur-value));
+	z-index: -3;   
+	background-image: var(--allen-background-image);  
+	background-position: center top;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.layout__center .fn__flex-1.fn__flex [data-type='wnd']{
+    margin: 10px auto;
+    padding: 0;
+    max-width: 940px;
+}
+.layout__center .fn__flex{
+    margin-right: 10px;
+}
+.layout__resize--lr:after{
+    background-color: transparent;
+    transition: var(--allen-common-transition);
+}
+.layout__resize:hover:after{
+    background-color: var(--b3-protyle-inline-link-color);
+    box-shadow: 0 0 2px var(--b3-protyle-inline-link-color);
+    opacity: 0.9;
+}
+[data-type='wnd'] .layout-tab-container ,[data-type='wnd'] .protyle,[data-type='wnd'] .protyle-content,[data-type='wnd'] .protyle-wysiwyg,.block__icons{
+    background: transparent;
+}
+.search__label .b3-form__icon-input{
+    background: transparent;
+}
+/* 样式 1：文档编辑区为毛玻璃效果 */
+.protyle-background{
+    margin: 0 10px;
+    border-radius: 8px;
+}
+
+.layout__center .layout-tab-bar{
+    background: transparent;
+    padding: 6px;
+    border: none;
+}
+.layout__center .layout-tab-bar .item{
+    background-color: transparent;
+    border:none;
+    margin: 0 4px;
+    padding-left: 20px;
+}
+.layout__center .layout-tab-bar .item--focus{
+    border-radius: 40px;
+}
+.layout__center .layout-tab-bar .item:hover:not(.item--focus) {
+    border-radius: 40px;
+}
+
+.layout__center .protyle-breadcrumb{
+    background: transparent;
+    margin-top: 5px;
+}
+.layout__center .protyle-breadcrumb__bar:hover{
+    background-color: rgba(250, 250, 250, 1); 
+}
+.layout__center .protyle-breadcrumb__bar{
+    background-color: rgba(255, 255, 255, 0.9);  
+    box-shadow: 0 0 4px rgba(210, 210, 210, 0.2);  
+}
+.layout__center .protyle-title__input{
+    background: transparent;
+}
+.layout-tab-container div{
+    #background:transparent; 
+}
+[data-type='wnd'] .protyle{
+    #background-color: #05c091;  
+}
 
 
-/************************* 其他 **********************************************/
-/****** 滚动条样式 *******/
-/* 通用滚动条 */
+.b3-typography table tr, .protyle-wysiwyg table tr{
+    background-color: transparent !important;
+}
+.b3-typography table tr:hover, .protyle-wysiwyg table tr:hover{
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+
+
+.protyle-wysiwyg [data-node-id].render-node[data-type="NodeBlockQueryEmbed"]{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.protyle-gutters button{
+    background-color: rgba(255, 255, 255, 0.5); 
+}
+.protyle-gutters:hover button {
+
+}
+
+
+
+.graph{
+    background: transparent;
+}
 ::-webkit-scrollbar {
     width : 8px;
     overflow-y: hidden;
 }
 ::-webkit-scrollbar-thumb{
-    background-color:#f2f2f2;
+    background-color:rgba(250, 250, 250, 0.45);
     border-radius: 15px; 
 }
 ::-webkit-scrollbar-thumb:hover{
     background-color: #ccc;
 }
-/* 侧边栏滚动条 */
+
 #layouts > .fn__flex-1 > .fn__flex-column ::-webkit-scrollbar{
     width: 6px;
 }
-#layouts > .fn__flex-1 > .fn__flex-column ::-webkit-scrollbar-thumb{
-    background-color:#454545;
+
+/********* 样式 1 代码结束 *********************/
+
+
+/********** 样式 2：文档编辑区为白色背景 ***********
+
+.protyle-background{
+    margin: 0px;
+    border-radius: 0px;
 }
-#layouts > .fn__flex-1 > .fn__flex-column  ::-webkit-scrollbar-thumb:hover{
-    background-color: #666666;
+.fn__flex-1.fn__flex [data-type='wnd']{
+    background-color: var(--b3-theme-background); 
+    opacity: 0.95;
+  
 }
+
+[data-type='wnd']::before{
+    background-color: var(--b3-theme-background);  
+	background-image: none;  
+
+}
+
+.layout-tab-bar{
+    padding-top: 5px;
+}
+
+.layout-tab-bar .item{
+    margin: 0 4px;
+    padding-left: 20px;
+}
+.graph{
+    background-color: var(--b3-theme-background);
+}
+::-webkit-scrollbar {
+    width : 8px;
+    overflow-y: hidden;
+}
+::-webkit-scrollbar-thumb{
+    background-color:#f4f4f4;
+    border-radius: 15px; 
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: #ccc;
+}
+
+#layouts > .fn__flex-1 > .fn__flex-column ::-webkit-scrollbar{
+    width: 6px;
+}
+
+/*********** 毛玻璃效果 代码结束 ***********************************************/
+
+/************************* 其他 **********************************************/
+
