@@ -1013,8 +1013,6 @@ body{
     background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-
-
 .protyle-wysiwyg [data-node-id].render-node[data-type="NodeBlockQueryEmbed"]{
     background-color: rgba(255, 255, 255, 0.5);
 }
@@ -1025,10 +1023,11 @@ body{
 
 }
 
-
-
-.graph{
+.protyle-preview,.protyle-preview__action,.graph{
     background: transparent;
+}
+.protyle-preview__action button{
+    background-color: white;
 }
 ::-webkit-scrollbar {
     width : 8px;
