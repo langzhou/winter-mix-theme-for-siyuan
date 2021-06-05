@@ -177,7 +177,7 @@
 @media only screen and (min-height: 900px) and (min-width: 1400px)
 {
     .toolbar{
-        height: 0px;
+        height: 10px;
         transition: height 400ms ease 0s;
     }
     .toolbar > div{
@@ -248,7 +248,7 @@ span.counter:not(.popover__block){
 .protyle-attr--refcount{
     border-radius: 2px;
 }
-/* 全屏 */
+/* 全屏模式 */
 .protyle--fullscreen {
     position: inherit;
     top: 0;
@@ -257,7 +257,6 @@ span.counter:not(.popover__block){
     height: 100vh !important;
     z-index: 90;
     border-radius: 0;
-    /* background-color: var(--b3-theme-background) !important; */
 }
 .protyle--fullscreen .protyle-wysiwyg{
     padding-left: 20px !important;
@@ -267,11 +266,33 @@ span.counter:not(.popover__block){
     margin-left: 20px !important;
     margin-right: 20px !important;
 }
+
 /********* 菜单、弹框 **************/
 /* 通用 */
 .b3-menu, .protyle-util{
-    background-color: var(--b3-theme-background);
+    /* background-color: var(--b3-theme-background); */
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(var(--allen-blur-value));
 }
+/* 弹框遮罩 */
+.b3-dialog__scrim{
+    background: transparent;
+}
+/* 设置弹框 */
+.b3-dialog__container{
+    background: transparent;
+    backdrop-filter: blur(var(--allen-blur-value));
+}
+.b3-tab-container,.config-account__center--text,.spread-search__preview,.protyle-breadcrumb{
+    background: transparent !important;
+}
+.search__header .b3-text-filed--text,.b3-text-filed{
+    background: transparent;
+}
+.b3-select,.b3-card{
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
 /* 右键菜单 */
 .b3-menu{
     padding: 10px 0px;
@@ -279,7 +300,8 @@ span.counter:not(.popover__block){
 /* 菜单项 */
 .b3-menu__item{
     padding: 4px 16px 4px 16px;
-    background-color: var(--b3-theme-background);
+    /* background-color: var(--b3-theme-background); */
+    background: transparent;
 }
 /* 菜单分割线 */
 .b3-menu__separator{
@@ -290,7 +312,7 @@ span.counter:not(.popover__block){
 /* 菜单项选中状态 */
 .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom), .b3-menu__item--current{
     border-radius: 0px;
-    background-color: var(--b3-theme-surface);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom)>.b3-menu__label, .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom)>.b3-menu__accelerator, .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom)>.b3-menu__icon, .b3-menu__item--current>.b3-menu__label, .b3-menu__item--current>.b3-menu__accelerator, .b3-menu__item--current>.b3-menu__icon{
     color: var(--b3-theme-on-background);
@@ -299,6 +321,10 @@ span.counter:not(.popover__block){
 /*二级菜单*/
 .b3-menu__submenu{
     background-color: var(--b3-theme-background) !important;
+}
+.b3-menu__submenu .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom),.b3-menu__submenu .b3-menu__item--current{
+    border-radius: 0px;
+    background-color: var(--b3-theme-surface);
 }
 /* 菜单中文字描述 */
 .b3-menu__item--readonly{
@@ -340,7 +366,7 @@ span.counter:not(.popover__block){
 .layout-tab-bar .item{
     background-color: transparent;
     border-bottom: 2px solid transparent;
-    color: var(--b3-theme-on-surface);
+    color: var(--b3-theme-on-surface);    
     opacity: 0.7;
 }
 .layout-tab-bar .item--focus{
@@ -352,6 +378,10 @@ span.counter:not(.popover__block){
 /* 页签标题 */
 .layout-tab-bar .item__text{
     padding: 0 2px;
+    text-overflow:ellipsis;
+}
+.layout-tab-bar .item__text::after,.layout-tab-bar .item--focus .item__text::after{
+    background: transparent;
 }
 /* 默认隐藏页签关闭按钮，悬浮时展现 */
 .layout-tab-bar .item__close{
@@ -363,19 +393,22 @@ span.counter:not(.popover__block){
 .layout-tab-bar .item--unupdate.item--focus{
     color: var(--b3-theme-on-background) !important;
 }
+
 /***** 面包屑 *****/
 .protyle-breadcrumb{
-    background-color: var(--b3-theme-background);
-    border-bottom: 0px solid var(--b3-border-color);
     padding: 0px 8px;
+    background: transparent;
+    margin-top: 5px;
 }
 .protyle-breadcrumb__bar{
-    background-color: var(--b3-theme-background);
     padding: 4px 8px;
     border-radius: 100px;
+    box-shadow: 0 0 4px rgba(210, 210, 210, 0.2); 
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(var(--allen-blur-value));
 }
 .protyle-breadcrumb__bar:hover{
-    background-color: var(--b3-theme-background);
+    background: rgba(255, 255, 255, 0.6); 
 }
 .protyle-breadcrumb__item svg{
     color: var(--b3-theme-on-surface);
@@ -385,6 +418,17 @@ span.counter:not(.popover__block){
 }
 .protyle-breadcrumb svg{
     #color: var(--b3-scroll-color);
+}
+
+/*调整右侧三点菜单样式*/
+.protyle-breadcrumb .b3-tooltips{
+    line-height: 30px;
+    height: 30px !important;
+}
+.protyle-breadcrumb .b3-tooltips svg{
+    opacity: 0.2;
+    float: none;
+    padding: 0;
 }
 
 /**** 分页加载条：默认隐藏，悬浮展现 *******/
@@ -400,16 +444,21 @@ span.counter:not(.popover__block){
 
 /* 设置编辑器光标颜色 */
 .protyle-wysiwyg{
-     caret-color:var(--b3-theme-primary);
+     caret-color:var(--b3-theme-secondary);     
+}
+
+/* 设置字体阴影效果 */
+.protyle-wysiwyg, .protyle-title input{
+    /* text-shadow: rgba(100, 100, 100, .05) 2px 2px 2px; */
 }
 
 /* 光标选中文本样式 */
 .protyle-wysiwyg ::selection{ 
-    background-color:rgba(45, 170, 219, 0.3);
+    background-color:var(--b3-theme-primary-lightest);
     #color: var(--b3-theme-on-primary);
 }
 
-/* 实验功能：鼠标划选区域*/
+/* 实验功能：鼠标划选区域 */
 .protyle-select{
     background-color: transparent;
 }
@@ -426,6 +475,8 @@ span.counter:not(.popover__block){
     border-radius: 3px;
     padding: 1px 8px;
     z-index: 100;
+    background: transparent;
+    backdrop-filter: blur(var(--allen-blur-value));
 }
 
 .protyle-toolbar__item--current{
@@ -540,6 +591,16 @@ span.counter:not(.popover__block){
 }
 
 /* 实验功能：优化反链浮窗面板的显示样式 */
+.block__popover{
+    background: transparent;
+    backdrop-filter: blur(var(--allen-blur-value));
+}
+.block__popover .protyle{
+    background: transparent;
+}
+.block__popover .protyle-breadcrumb__bar{
+    background: transparent;
+}
 .block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__item,.block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__arrow{
     visibility: visible; /*悬浮时显示完整面包屑*/
 }
@@ -552,16 +613,8 @@ span.counter:not(.popover__block){
 .block__popover .protyle-breadcrumb__item:first-child svg{
     /* display: none; */
 }
-/*调整右侧三点菜单样式*/
-.block__popover .protyle-breadcrumb .b3-tooltips{
-    line-height: 36px;
-    height: 36px !important;
-}
-.block__popover .protyle-breadcrumb .b3-tooltips svg{
-    opacity: 0.2;
-    float: none;
-    padding: 0;
-}
+
+
 /****** 实验功能结束 *******/
 
 /********文档预览模式 ********/
@@ -606,7 +659,11 @@ strong[style]{
 .protyle-wysiwyg [data-node-id] span[data-type="block-ref"]:hover{
     background-color: var(--b3-theme-primary-lighter);
 }
-
+/* 颜色卡片内的块引用字体颜色与卡片保持一致 */
+.protyle-wysiwyg [style] span[data-type="block-ref"]{
+    color: inherit;
+    border-color: inherit;
+}
 
 /* 超级链接 */
 .b3-typography a,.protyle-wysiwyg [data-node-id] span[data-type="a"]{
@@ -954,6 +1011,12 @@ body{
 }
 .toolbar,#dockLeft, #dockRight, #dockTop, #dockBottom{
     background: transparent;
+    border: none;
+    opacity: 0;
+    transition: opacity 400ms ease 0s;
+}
+.toolbar:hover,#dockLeft:hover, #dockRight:hover, #dockTop:hover, #dockBottom:hover{
+    opacity: 1;
 }
 
 .fn__flex-1.fn__flex [data-type='wnd']{
@@ -963,7 +1026,7 @@ body{
     padding: 2px 10px;
     position: relative;
     margin: 10px;
-    box-shadow: 0 4px 12px rgba(120,120,120,0.3);
+    box-shadow: 0 4px 12px rgba(120,120,120,0.35);
 	overflow: hidden;
 	z-index: 2;
 	box-sizing: border-box;
@@ -974,21 +1037,18 @@ body{
     content: '';
 	position: absolute;
 	top: 0;	left: 0; right: 0;	bottom: 0;
-	-webkit-filter: blur(var(--allen-blur-value));
-	-moz-filter: blur(var(--allen-blur-value));
-	-ms-filter: blur(var(--allen-blur-value));
-	-o-filter: blur(var(--allen-blur-value));
-	filter: blur(var(--allen-blur-value));
 	z-index: -3;   
 	background-image: var(--allen-background-image);  
 	background-position: center top;
 	background-size: cover;
 	background-attachment: fixed;
+    background:transparent;
+    backdrop-filter: blur(var(--allen-blur-value));
 }
+
 .layout__center .fn__flex-1.fn__flex [data-type='wnd']{
     margin: 10px auto;
     max-width: 940px;
-
 }
 .layout__center .fn__flex{
     padding-right: 8px;
@@ -1014,7 +1074,6 @@ body{
     margin: 0 10px;
     border-radius: 8px;
 }
-
 .layout__center .layout-tab-bar{
     background: transparent;
     padding: 6px;
@@ -1033,17 +1092,6 @@ body{
     border-radius: 40px;
 }
 
-.layout__center .protyle-breadcrumb{
-    background: transparent;
-    margin-top: 5px;
-}
-.layout__center .protyle-breadcrumb__bar:hover{
-    background-color: rgba(250, 250, 250, 1); 
-}
-.layout__center .protyle-breadcrumb__bar{
-    background-color: rgba(255, 255, 255, 0.9);  
-    box-shadow: 0 0 4px rgba(210, 210, 210, 0.2);  
-}
 .layout__center .protyle-title__input{
     background: transparent;
 }
@@ -1076,8 +1124,9 @@ body{
     background: transparent;
 }
 .protyle-preview__action button{
-    background-color: white;
+    background-color:rgba(255, 255, 255, 0.8);
 }
+
 ::-webkit-scrollbar {
     width : 6px;
     overflow-y: hidden;
@@ -1105,14 +1154,12 @@ body{
 }
 .fn__flex-1.fn__flex [data-type='wnd']{
     background-color: var(--b3-theme-background); 
-    opacity: 0.95;
-  
+    opacity: 0.95;  
 }
 
 [data-type='wnd']::before{
     background-color: var(--b3-theme-background);  
 	background-image: none;  
-
 }
 
 .layout-tab-bar{
@@ -1143,6 +1190,3 @@ body{
 }
 
 /*********** 毛玻璃效果 代码结束 ***********************************************/
-
-/************************* 其他 **********************************************/
-
