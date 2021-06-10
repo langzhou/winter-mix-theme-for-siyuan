@@ -21,7 +21,6 @@
     --b3-theme-on-surface:    #666666;
     --b3-theme-on-error:      #FFFFFF;
 
-
     /* 字体 */
     --b3-font-family:  "Pingfang SC","Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
     --b3-font-family-code: mononoki, Consolas, "Liberation Mono", Menlo, Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
@@ -216,7 +215,7 @@
 #layouts > .fn__flex-1 > .fn__flex-column{
     transition: var(--allen-flex-column-transition);
 }
-/*  边栏分割线 */
+/* 边栏分割线 */
 .layout__resize--lr:after{
     background-color: var(--b3-theme-surface);
     transition: var(--allen-common-transition);
@@ -248,7 +247,8 @@ span.counter:not(.popover__block){
 .protyle-attr--refcount{
     border-radius: 2px;
 }
-/* 全屏模式 */
+
+/** 全屏模式 **/
 .protyle--fullscreen {
     position: inherit;
     top: 0;
@@ -257,6 +257,18 @@ span.counter:not(.popover__block){
     height: 100vh !important;
     z-index: 90;
     border-radius: 0;
+}
+.protyle--fullscreen::before{
+    content: "全屏模式";
+    position: absolute;
+    left: 10px;
+    top: 4px;
+    padding: 5px 10px;
+    color:rgb(131, 89, 12) ;
+    background: rgba(219, 157, 41, 0.9);
+    backdrop-filter: blur(--allen-blur-value);
+    border-radius: 54px;
+    z-index: 300;
 }
 .protyle--fullscreen .protyle-wysiwyg{
     padding-left: 20px !important;
@@ -270,7 +282,6 @@ span.counter:not(.popover__block){
 /********* 菜单、弹框 **************/
 /* 通用 */
 .b3-menu, .protyle-util{
-    /* background-color: var(--b3-theme-background); */
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(var(--allen-blur-value));
 }
@@ -278,7 +289,7 @@ span.counter:not(.popover__block){
 .b3-dialog__scrim{
     background: transparent;
 }
-/* 设置弹框 */
+/* 设置页面弹框 */
 .b3-dialog__container{
     background: transparent;
     backdrop-filter: blur(var(--allen-blur-value));
@@ -330,6 +341,7 @@ span.counter:not(.popover__block){
 .b3-menu__item--readonly{
     line-height: 1.7em;
 }
+
 /* 弹出设置框，如超级链接设置 */
 .protyle-util{
     padding: 10px;
@@ -380,7 +392,7 @@ span.counter:not(.popover__block){
     padding: 0 2px;
     text-overflow:ellipsis;
 }
-.layout-tab-bar .item__text::after,.layout-tab-bar .item--focus .item__text::after{
+.layout-tab-bar .item__text::after,.layout-tab-bar .item--focus .item__text::after,.layout-tab-bar .item:hover:not(.item--focus) .item__text::after{
     background: transparent;
 }
 /* 默认隐藏页签关闭按钮，悬浮时展现 */
@@ -416,9 +428,7 @@ span.counter:not(.popover__block){
 .protyle-breadcrumb__item:hover svg,.protyle-breadcrumb__item:hover{
     color: var(--b3-theme-primary);
 }
-.protyle-breadcrumb svg{
-    #color: var(--b3-scroll-color);
-}
+
 
 /*调整右侧三点菜单样式*/
 .protyle-breadcrumb .b3-tooltips{
@@ -501,10 +511,22 @@ span.counter:not(.popover__block){
 }
 
 /***** 块图标 ********/
+/* 调整块图标垂直位置偏移 */
 .protyle-gutters{
-    padding: 9px 0; /* 调整调整 padding 之后带来的块图标垂直位置偏移 */
+    padding: 0.625em 0; 
 }
-
+.protyle-gutters button[data-subtype="h1"] {
+    margin-top: 0.875em;
+}
+.protyle-gutters button[data-subtype="h2"] {
+    margin-top: 0.625em;
+}
+.protyle-gutters button[data-subtype="h3"] {
+    margin-top: 0.375em;
+}
+.protyle-gutters button[data-subtype="h4"] {
+    margin-top: 0.25em;
+}
 
 /* 减淡块图标颜色 */
 .protyle-gutters svg {
@@ -540,6 +562,14 @@ span.counter:not(.popover__block){
 
 
 /***** 大纲圆点 *******/
+/* 优化：v1.2 beta3+ 版本下段落距离圆点过远 */
+.protyle-wysiwyg [data-node-id].li>.protyle-action{
+    width: 16px;
+}
+.protyle-wysiwyg [data-node-id].li>[data-node-id]{
+    margin-left: 16px;
+}
+
 /* 设置圆点基础样式 */
 .protyle-wysiwyg [data-node-id].li>.protyle-action svg{
     width:12px;
@@ -688,6 +718,11 @@ strong[style]{
 /* 数学公式 */
 .b3-typography [data-subtype="math"], .protyle-wysiwyg [data-subtype="math"]{
     font-size: 100%;
+}
+
+/* 高亮 */
+.b3-typography mark, .protyle-wysiwyg mark{
+    border-radius: 2px;
 }
 
 /* 标签 */
@@ -1009,6 +1044,7 @@ body{
     background-position: center top;
 	background-size: cover;
 }
+
 .toolbar,#dockLeft, #dockRight, #dockTop, #dockBottom{
     background: transparent;
     border: none;
@@ -1018,12 +1054,14 @@ body{
 .toolbar:hover,#dockLeft:hover, #dockRight:hover, #dockTop:hover, #dockBottom:hover{
     opacity: 1;
 }
-
+.layout__empty{
+    background: transparent;
+}
 .fn__flex-1.fn__flex [data-type='wnd']{
     #background: transparent; 
     min-height: 90% !important;
     margin: 0px auto;
-    padding: 2px 10px;
+    padding: 10px 10px;
     position: relative;
     margin: 10px;
     box-shadow: 0 4px 12px rgba(120,120,120,0.35);

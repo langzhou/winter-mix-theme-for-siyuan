@@ -1,7 +1,6 @@
 # 思源笔记亮色主题：Winter-Mix
 
-在主题 Winter 的基础上改造而成，毛玻璃效果。
+此主题已停止更新，新的主题已统一迁移至 [Toy Theme for Siyuan](https://github.com/langzhou/toy-theme-for-siyuan) 
 
-问题反馈：https://github.com/langzhou/siyuan-note/issues/1
 
 ![preview](https://raw.githubusercontent.com/langzhou/winter-mix-theme-for-siyuan/master/preview.png)
