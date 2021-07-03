@@ -130,7 +130,7 @@
     --b3-protyle-inline-strong-color:      inherit; /* 粗体 */
     --b3-protyle-inline-em-color:          inherit; /* 斜体 */
     --b3-protyle-inline-s-color:           inherit; /* 删除线 */
-    --b3-protyle-inline-link-color:        var(--b3-theme-primary); /* 超级链接 */
+    --b3-protyle-inline-link-color:        #076f7e; /* 超级链接 */
     --b3-protyle-inline-mark-background: #ffe68d; /* 高亮背景 */
     --b3-protyle-inline-mark-color:        inherit; /* 高亮文字 */
     --b3-protyle-inline-tag-color:       #5f6368; /* 标签 */
